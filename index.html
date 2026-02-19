@@ -30,7 +30,7 @@ body {
 /* Logo */
 .logo {
     font-family:'Luckiest Guy',cursive;
-    font-size:3rem;
+    font-size:5rem;
     text-align:center;
     color:#ffcc00;
     text-shadow:4px 4px 0 #0033cc;
@@ -93,7 +93,7 @@ body {
 
 .card-back {
     background:#00cc99;
-    color:black;
+    color:white;
     transform:rotateY(180deg);
     display:flex;
     flex-direction:column;
@@ -141,13 +141,13 @@ footer {
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>PSA UV Protective Case</h3>
-                        <img src="file:///C:/Users/%E5%8D%8E%E7%A1%95ROG/Downloads/image.png">
+                        <img width="200px" src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/psa%20case.png">
                     </div>
                     <div class="card-back">
                         <h3>PSA UV Protective Case </h3>
                         <p>Multiple Colours available </p >
                         <p class="price">R250 each</p >
-                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                        <button onclick="buyProduct(event,'PSA UV Protective Case')">Buy via WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,7 @@ footer {
                         <h3>Pokemon Eevee GX Premium Eeveelutions Binder</h3>
                         <p>480 slots </p >
                         <p class="price">R350 each</p >
-                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Binder')">Buy via WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -171,13 +171,13 @@ footer {
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>Pokemon Accessories Metal Tin</h3>
-                        <img src="file:///C:/Users/%E5%8D%8E%E7%A1%95ROG/Desktop/Weixin%20Image_20260219223535_22_3.jpg">
+                        <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Tins.png" alt="Pokemon Accessories Metal Tin">
                     </div>
                     <div class="card-back">
                         <h3>Pokemon Accessories Metal Tin</h3>
                         <p>Multiple Options available</p >
                         <p class="price">R60 each</p >
-                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                        <button onclick="buyProduct(event,'Pokemon Accessories Metal Tin')">Buy via WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -186,20 +186,21 @@ footer {
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>Coming Soon</h3>
-                        <img src="https://tse2.mm.bing.net/th/id/OIP.F4QZXndSGBvo-AOfqiGlywHaGo?cb=defcache2&defcache=1&rs=1&pid=ImgDetMain&o=7&rm=3">
+                        <img src="https://pixy.org/src/461/4616147.jpeg" height="250" width="200" alt="Coming Soon">
                     </div>
                     <div class="card-back">
                         <h3>Coming Soon</h3>
-                        <p>Coming Soon.</p >
+                        <p>Coming Soon</p >
                         <p class="price"></p >
                         <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 </div>
+
 
 <footer>
 © 2026 PokéDoc | Not affiliated with Pokémon
@@ -232,7 +233,7 @@ function flipCard(card) {
 
 function buyProduct(event, productName) {
     event.stopPropagation(); // prevents flip when clicking button
-    let phoneNumber = "YOURNUMBER"; // <-- Replace this!
+    let phoneNumber = "8615253131891"; // <-- Replace this!
     let message = encodeURIComponent("Hi PokeDoc! I want to buy: " + productName);
     window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
 }
