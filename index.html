@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PokéDoc</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background:#cc0000;
+    font-family:'Orbitron',sans-serif;
+    padding:20px;
+    color:white;
+}
+
+/* Pokedex Frame */
+.pokedex {
+    background:#990000;
+    border-radius:25px;
+    padding:20px;
+    max-width:900px;
+    margin:auto;
+    box-shadow:0 0 40px black;
+}
+
+/* Logo */
+.logo {
+    font-family:'Luckiest Guy',cursive;
+    font-size:3rem;
+    text-align:center;
+    color:#ffcc00;
+    text-shadow:4px 4px 0 #0033cc;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow:0 0 10px yellow; }
+    to { text-shadow:0 0 25px blue; }
+}
+
+/* Screen */
+.screen {
+    background:#111;
+    border-radius:15px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:inset 0 0 20px #00ffcc;
+}
+
+.container {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* Flip Card */
+.card { perspective:1000px; cursor:pointer; }
+
+.card-inner {
+    position:relative;
+    width:100%;
+    height:350px;
+    transition:transform 0.8s;
+    transform-style:preserve-3d;
+}
+
+.card.flip .card-inner {
+    transform:rotateY(180deg);
+}
+
+.card-front,.card-back {
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:15px;
+    backface-visibility:hidden;
+    padding:20px;
+}
+
+.card-front {
+    background:#222;
+    text-align:center;
+}
+
+.card-front img {
+    width:100%;
+    border-radius:10px;
+}
+
+.card-back {
+    background:#00cc99;
+    color:black;
+    transform:rotateY(180deg);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.price {
+    font-size:1.2rem;
+    margin:15px 0;
+}
+
+button {
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover {
+    background:#1ebe5d;
+}
+
+footer {
+    text-align:center;
+    margin-top:20px;
+    font-size:0.8rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="pokedex">
+    <div class="logo">PokéDoc</div>
+
+    <div class="screen">
+        <div class="container">
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>PSA UV Protective Case</h3>
+                        <img src="file:///C:/Users/%E5%8D%8E%E7%A1%95ROG/Downloads/image.png">
+                    </div>
+                    <div class="card-back">
+                        <h3>PSA UV Protective Case </h3>
+                        <p>Multiple Colours available </p >
+                        <p class="price">R250 each</p >
+                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>Pokemon Eevee GX Premium Eeveelutions Binder</h3>
+                        <img src="https://moxiecardshop.com/cdn/shop/files/binders_0f2c28fc-e58f-40e7-9bb0-365d0fe30f8e.jpg?v=1711568122&width=1445">
+                    </div>
+                    <div class="card-back">
+                        <h3>Pokemon Eevee GX Premium Eeveelutions Binder</h3>
+                        <p>480 slots </p >
+                        <p class="price">R350 each</p >
+                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>Pokemon Accessories Metal Tin</h3>
+                        <img src="file:///C:/Users/%E5%8D%8E%E7%A1%95ROG/Desktop/Weixin%20Image_20260219223535_22_3.jpg">
+                    </div>
+                    <div class="card-back">
+                        <h3>Pokemon Accessories Metal Tin</h3>
+                        <p>Multiple Options available</p >
+                        <p class="price">R60 each</p >
+                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>Coming Soon</h3>
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.F4QZXndSGBvo-AOfqiGlywHaGo?cb=defcache2&defcache=1&rs=1&pid=ImgDetMain&o=7&rm=3">
+                    </div>
+                    <div class="card-back">
+                        <h3>Coming Soon</h3>
+                        <p>Coming Soon.</p >
+                        <p class="price"></p >
+                        <button onclick="buyProduct(event,'Booster Pack')">Buy via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<footer>
+© 2026 PokéDoc | Not affiliated with Pokémon
+</footer>
+
+<script>
+function playPokedexSound() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = "square";
+    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15);
+
+    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.2);
+}
+
+function flipCard(card) {
+    card.classList.toggle("flip");
+    playPokedexSound();
+}
+
+function buyProduct(event, productName) {
+    event.stopPropagation(); // prevents flip when clicking button
+    let phoneNumber = "YOURNUMBER"; // <-- Replace this!
+    let message = encodeURIComponent("Hi PokeDoc! I want to buy: " + productName);
+    window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
