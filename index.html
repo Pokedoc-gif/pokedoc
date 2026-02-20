@@ -10,6 +10,58 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+
+.modal-content{
+    background:#111;
+    margin:10% auto;
+    padding:30px;
+    width:90%;
+    max-width:600px;
+    border-radius:15px;
+    box-shadow:0 0 30px #00ffcc;
+    text-align:center;
+    position:relative;
+    animation:popIn 0.3s ease-out;
+}
+
+@keyframes popIn{
+    from{transform:scale(0.7); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+.close{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+    color:white;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:20px;
+}
+
+.qr-box img{
+    width:180px;
+    height:180px;
+    border-radius:10px;
+}
+
 body {
     background:#cc0000;
     font-family:'Orbitron',sans-serif;
@@ -170,6 +222,21 @@ footer {
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
+                        <h3>Pokemon Eevee GX Premium Eeveelutions Card Sleeves</h3>
+                        <img src="https://i.ebayimg.com/images/g/RUIAAOSwboBmyJhT/s-l960.jpg" alt="Pokemon Accessories Metal Tin">
+                    </div>
+                    <div class="card-back">
+                        <h3>Pokemon Eevee GX Premium Eeveelutions Card Sleeves</h3>
+                        <p>64 Card Sleeves per pack</p >
+                        <p class="price">R50 per pack</p >
+                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Card Sleeves')">Buy via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
                         <h3>Pokemon Accessories Metal Tin</h3>
                         <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Tins.png" alt="Pokemon Accessories Metal Tin">
                     </div>
@@ -201,6 +268,32 @@ footer {
     </div>
 </div>
 
+ <!-- Contact Button -->
+    <div style="text-align:center; margin-top:20px;">
+        <button onclick="openContact()">Contact Us</button>
+    </div>
+
+</div>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeContact()">&times;</span>
+        <h2>Contact PokéDoc</h2>
+
+        <div class="contact-grid">
+            <div class="qr-box">
+                <h3>WhatsApp</h3>
+                <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Whatsapp.png" height="250" width="150">
+            </div>
+
+            <div class="qr-box">
+                <h3>Instagram</h3>
+                <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Wechat.png" height="250" width="150">
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer>
 © 2026 PokéDoc | Not affiliated with Pokémon
@@ -235,7 +328,7 @@ function buyProduct(event, productName) {
     event.stopPropagation(); // prevents flip when clicking button
     let phoneNumber = "8615253131891"; // <-- Replace this!
     let message = encodeURIComponent("Hi PokeDoc! I want to buy: " + productName);
-    window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
+    window.open("https://wa.me/" + 8615253131891 + "?text=" + message, "_blank");
 }
 </script>
 
