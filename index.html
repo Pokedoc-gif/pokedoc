@@ -5,205 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PokéDoc</title>
 
+<link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-
-/* Modal */
-.modal {
-    display:none;
-    position:fixed;
-    z-index:999;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.8);
-}
-
-.modal-content {
-    background:#111;
-    margin:10% auto;
-    padding:30px;
-    width:90%;
-    max-width:600px;
-    border-radius:15px;
-    box-shadow:0 0 30px #00ffcc;
-    text-align:center;
-    position:relative;
-    animation:popIn 0.3s ease-out;
-}
-
-@keyframes popIn {
-    from{transform:scale(0.7); opacity:0;}
-    to{transform:scale(1); opacity:1;}
-}
-
-.close {
-    position:absolute;
-    top:10px;
-    right:20px;
-    font-size:30px;
-    cursor:pointer;
-    color:white;
-}
-
-.contact-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-top:20px;
-}
-
-.qr-box img {
-    width:180px;
-    height:180px;
-    border-radius:10px;
-}
-
-body {
-    background:#cc0000;
-    font-family:'Orbitron',sans-serif;
-    padding:20px;
-    color:white;
-}
-
-/* Pokedex Frame */
-.pokedex {
-    background:#990000;
-    border-radius:25px;
-    padding:20px;
-    max-width:900px;
-    margin:auto;
-    box-shadow:0 0 40px black;
-}
-
-/* Logo */
-.logo {
-    font-family:'Luckiest Guy',cursive;
-    font-size:5rem;
-    text-align:center;
-    color:#ffcc00;
-    text-shadow:4px 4px 0 #0033cc;
-    animation:glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow:0 0 10px yellow; }
-    to { text-shadow:0 0 25px blue; }
-}
-
-/* Screen */
-.screen {
-    background:#111;
-    border-radius:15px;
-    padding:20px;
-    margin-top:20px;
-    box-shadow:inset 0 0 20px #00ffcc;
-}
-
-.container {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-/* Flip Card */
-.card { perspective:1000px; cursor:pointer; }
-
-.card-inner {
-    position:relative;
-    width:100%;
-    height:350px;
-    transition:transform 0.8s;
-    transform-style:preserve-3d;
-}
-
-.card.flip .card-inner {
-    transform:rotateY(180deg);
-}
-
-.card-front,.card-back {
-    position:absolute;
-    width:100%;
-    height:100%;
-    border-radius:15px;
-    backface-visibility:hidden;
-    padding:20px;
-}
-
-.card-front {
-    background:#222;
-    text-align:center;
-}
-
-.card-front img {
-    width:100%;
-    border-radius:10px;
-}
-
-.card-back {
-    background:#00cc99;
-    color:white;
-    transform:rotateY(180deg);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.price {
-    font-size:1.2rem;
-    margin:15px 0;
-}
-
-button {
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-button:hover {
-    background:#1ebe5d;
-}
-
-footer {
-    text-align:center;
-    margin-top:20px;
-    font-size:0.8rem;
-}
-</style>
+<script src="script.js" defer></script>
 </head>
 
 <body>
 
+<!-- Pokeball Loader -->
+<div id="loader">
+    <div class="pokeball">
+        <div class="center-line"></div>
+        <div class="center-button"></div>
+    </div>
+</div>
+
 <div class="pokedex">
+
     <div class="logo">PokéDoc</div>
+    <button id="darkToggle">🌙 Toggle Dark Mode</button>
 
     <div class="screen">
+
         <div class="container">
 
+            <!-- PSA CASE -->
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>PSA UV Protective Case</h3>
-                        <img width="200px" src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/psa%20case.png">
+                        <img width="200" src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/psa%20case.png">
                     </div>
                     <div class="card-back">
-                        <h3>PSA UV Protective Case </h3>
-                        <p>Multiple Colours available </p >
-                        <p class="price">R250 each</p >
-                        <button onclick="buyProduct(event,'PSA UV Protective Case')">Buy via WhatsApp</button>
+                        <h3>PSA UV Protective Case</h3>
+                        <p>Multiple Colours available</p >
+                        <p class="price" id="display1">R250 each</p >
+                        <button onclick="buyProduct(event,'PSA UV Protective Case')">
+                            Buy via WhatsApp
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- BINDER -->
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
@@ -212,107 +57,79 @@ footer {
                     </div>
                     <div class="card-back">
                         <h3>Pokemon Eevee GX Premium Eeveelutions Binder</h3>
-                        <p>480 slots </p >
-                        <p class="price">R350 each</p >
-                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Binder')">Buy via WhatsApp</button>
+                        <p>480 slots</p >
+                        <p class="price" id="display2">R350 each</p >
+                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Binder')">
+                            Buy via WhatsApp
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- SLEEVES -->
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>Pokemon Eevee GX Premium Eeveelutions Card Sleeves</h3>
-                        <img src="https://i.ebayimg.com/images/g/RUIAAOSwboBmyJhT/s-l960.jpg" alt="Pokemon Accessories Metal Tin">
+                        <img src="https://i.ebayimg.com/images/g/RUIAAOSwboBmyJhT/s-l960.jpg">
                     </div>
                     <div class="card-back">
                         <h3>Pokemon Eevee GX Premium Eeveelutions Card Sleeves</h3>
                         <p>64 Card Sleeves per pack</p >
-                        <p class="price">R50 per pack</p >
-                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Card Sleeves')">Buy via WhatsApp</button>
+                        <p class="price" id="display3">R50 each</p >
+                        <button onclick="buyProduct(event,'Pokemon Eevee GX Premium Eeveelutions Card Sleeves')">
+                            Buy via WhatsApp
+                        </button>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- TIN -->
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
                         <h3>Pokemon Accessories Metal Tin</h3>
-                        <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Tins.png" alt="Pokemon Accessories Metal Tin">
+                        <img src="https://uploads.onecompiler.io/44e4cjszf/44e49nb36/Tins.png">
                     </div>
                     <div class="card-back">
                         <h3>Pokemon Accessories Metal Tin</h3>
                         <p>Multiple Options available</p >
-                        <p class="price">R60 each</p >
-                        <button onclick="buyProduct(event,'Pokemon Accessories Metal Tin')">Buy via WhatsApp</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" onclick="flipCard(this)">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>Coming Soon</h3>
-                        <img src="https://pixy.org/src/461/4616147.jpeg" height="250" width="200" alt="Coming Soon">
-                    </div>
-                    <div class="card-back">
-                        <h3>Coming Soon</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" onclick="flipCard(this)">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <h3>Contact Us</h3>
-                        <img src="https://uploads.onecompiler.io/44e4cjszf/44e78zseq/Weixin%20Image_20260221020532_40_3.jpg" height="200" width="200" alt="Contact Us">
-                    </div>
-                    <div class="card-back">
-                        <h3>Contact Us</h3>
+                        <p class="price" id="display4">R60 each</p >
+                        <button onclick="buyProduct(event,'Pokemon Accessories Metal Tin')">
+                            Buy via WhatsApp
+                        </button>
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <!-- ADMIN PANEL (INSIDE SCREEN, NOT HEAD) -->
+        <div id="adminPanel">
+            <h3>Admin Dashboard</h3>
+
+            <label>PSA Case Price:</label>
+            <input type="text" id="price1" value="R250"><br><br>
+
+            <label>Binder Price:</label>
+            <input type="text" id="price2" value="R350"><br><br>
+
+            <label>Sleeves Price:</label>
+            <input type="text" id="price3" value="R50"><br><br>
+
+            <label>Tin Price:</label>
+            <input type="text" id="price4" value="R60"><br><br>
+
+            <button onclick="updatePrices()">Update Prices</button>
+        </div>
+
     </div>
 </div>
 
 <footer>
 © 2026 PokéDoc | Not affiliated with Pokémon
+<p onclick="toggleAdmin()" style="cursor:pointer;">⚙️</p >
 </footer>
-
-<script>
-function playPokedexSound() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-
-    oscillator.type = "square";
-    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15);
-
-    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + 0.2);
-}
-
-function flipCard(card) {
-    card.classList.toggle("flip");
-    playPokedexSound();
-}
-
-function buyProduct(event, productName) {
-    event.stopPropagation(); // prevents flip when clicking button
-    let phoneNumber = "8615253131891"; // <-- Replace this!
-    let message = encodeURIComponent("Hi PokeDoc! I want to buy: " + productName);
-    window.open("https://wa.me/" + 8615253131891 + "?text=" + message, "_blank");
-}
-</script>
 
 </body>
 </html>
