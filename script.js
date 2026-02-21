@@ -36,7 +36,7 @@ function playPokedexSound(){
 function buyProduct(event,productName){
     event.stopPropagation();
     let message=encodeURIComponent("Hi PokeDoc! I want to buy: "+productName);
-    window.open("https://wa.me/"+phoneNumber+"?text="+message,"_blank");
+    window.open("https://wa.me/"+8615253131891+"?text="+message,"_blank");
 }
 
 /* Dark Mode */
