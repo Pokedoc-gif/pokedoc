@@ -1,4 +1,4 @@
-// js/firebase.js
+// jsfirebase.js
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -6,12 +6,12 @@ import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstati
 
 // 🔑 Paste your config here
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_BUCKET",
-  messagingSenderId: "YOUR_MSG_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCCxkZZbcAJphfnlTwztK_9LDAf-AXKcXA",
+  authDomain: "pokedoc-store.firebaseapp.com",
+  projectId: "pokedoc-store",
+  storageBucket: "pokedoc-store.firebasestorage.app",
+  messagingSenderId: "342362381577",
+  appId: "1:342362381577:web:be6877326b4e92830b07d8"
 };
 
 const app = initializeApp(firebaseConfig);
